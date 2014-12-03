@@ -44,6 +44,14 @@ LOCAL_CFLAGS += -DLIBWPA_CLIENT_EXISTS
 LOCAL_SHARED_LIBRARIES += libwpa_client
 endif
 
+ifeq ($(BOARD_HAVE_MARVELL_WIFI),true)
+LOCAL_CFLAGS += -DMRVL_WIFI
+LOCAL_C_INCLUDES += hardware/marvell/wlan/mrvl/MarvellWireless
+ifeq ($(MRVL_WIRELESS_DAEMON_API),true)
+LOCAL_SHARED_LIBRARIES += libMarvellWireless
+endif
+endif
+
 ifeq ($(BOARD_HAVE_SAMSUNG_WIFI),true)
 LOCAL_CFLAGS += -DSAMSUNG_WIFI
 endif
